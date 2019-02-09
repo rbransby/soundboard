@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var player = require('play-sound')(opts = {})
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.post('/playsound', function(req, res, next) {
+  player.play('./sounds/'+req.body.sound, function(err){
+    if (err) throw err
+  })
+  console.log();
 });
 
 module.exports = router;
