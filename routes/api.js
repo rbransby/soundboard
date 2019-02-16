@@ -5,9 +5,12 @@ var player = require('play-sound')((opts = {}));
 /* GET users listing. */
 router.post('/playsound', function(req, res, next) {
   player.play('./sounds/' + req.body.sound, function(err) {
-    if (err) throw err;
+    if (err) {
+      res.json({ played: false });
+    }
   });
-  res.sendStatus(200);
+
+  res.json({played: true});
 });
 
 module.exports = router;
