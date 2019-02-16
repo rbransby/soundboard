@@ -1,8 +1,123 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+body {
+  padding: 20px;
+  font-size: 16px;
+  font-family: "Comic Sans Ms";
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sound-button {
+  font-family: inherit;
+  position: relative;
+  display: inline-block;
+  width: 240px;
+  height: 240px;
+  border: 0;
+  margin: 1em;
+  outline: none;
+  background-color: #c2290a;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 200ms;
+  box-shadow: inset 0 10px 0 #da2e0b, inset 0 -10px 4px #aa2409, 0 0 4px #c2290a, inset 0 0 8px #791a06, inset 0 0 8px rgba(51, 51, 51, 0.5), inset 0 0 4px 20px #c2290a, inset 0 -8px 6px 24px rgba(51, 51, 51, 0.7), inset 0 0 4px 24px #611405, inset 0 0 4px 24px rgba(51, 51, 51, 0.7), inset 0 0 2px 26.0869565217px black, inset 0 0 2px 30px rgba(247, 133, 110, 0.7), inset 0 12px 0 28.2352941176px rgba(244, 71, 37, 0.7), inset 0 -12px 4px 28.2352941176px rgba(145, 31, 8, 0.2), inset 0 0 0 43.6363636364px #c2290a, inset 0 96px 32px #aa2409, inset 0 0 24px 40px #911f08, 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.sound-button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.sound-button .text {
+  color: #fff;
+  font-size: 1.4rem;
+  max-width: 70%;
+  display: block;
+  margin: 0 auto;
+  transition: opacity 200ms ease-out;
+}
+
+.sound-button:active, .sound-button.is-pushed {
+  box-shadow: inset 0 10px 0 #da2e0b, inset 0 -10px 4px #aa2409, 0 0 4px #c2290a, inset 0 0 8px #791a06, inset 0 0 8px rgba(51, 51, 51, 0.5), inset 0 0 4px 20px #c2290a, inset 0 -8px 6px 24px rgba(51, 51, 51, 0.7), inset 0 0 4px 24px #611405, inset 0 0 4px 24px rgba(51, 51, 51, 0.7), inset 0 0 6px 28.2352941176px black, inset 0 0 2px 32px rgba(247, 133, 110, 0.2), inset 0 12px 0 28px rgba(244, 71, 37, 0.5), inset 0 -12px 4px 28px rgba(97, 20, 5, 0.2), inset 0 0 0 43.6363636364px #b32609, inset 0 96px 32px #9b2108, inset 0 0 24px 40px #791a06, 0 6px 12px rgba(0, 0, 0, 0.5);
+  background-color: #b8270a;
+}
+.sound-button:active:before, .sound-button.is-pushed:before {
+  opacity: .5;
+}
+.sound-button:before {
+  content: '';
+  position: absolute;
+  bottom: 53.3333333333px;
+  left: 66.6666666667px;
+  display: block;
+  width: 109.0909090909px;
+  height: 72.7272727273px;
+  background: rgba(247, 133, 110, 0.2);
+  background: linear-gradient(to top, rgba(250, 173, 158, 0.3) 0%, rgba(194, 41, 10, 0.1) 100%);
+  border-radius: 40% 40% 60% 60%;
+  transition: opacity 200ms;
+}
+
+.loader-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 200ms ease-in;
+  opacity: 0;
+}
+
+.sound-playing .loader-wrapper {
+  opacity: 1;
+}
+
+.sound-playing .text {
+  opacity: 0;
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%) scale(0);
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
 }
