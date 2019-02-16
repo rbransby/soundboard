@@ -7,10 +7,11 @@ router.post('/playsound', function(req, res, next) {
   player.play('./sounds/' + req.body.sound, function(err) {
     if (err) {
       res.json({ played: false });
+      throw err;
     }
-  });
 
-  res.json({played: true});
+    res.json({ played: true });
+  });
 });
 
 module.exports = router;

@@ -44,10 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // hack to make it seem like classes come off after sound is played
-    // TODO: api returns 200 after sound has finished playing
-    await waitFor(3000);
-
     await removePlayingClasses(buttons);
   };
 
