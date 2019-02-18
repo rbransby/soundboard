@@ -6,9 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     disabled: 'disabled'
   };
 
-  const waitFor = ms => new Promise(r => setTimeout(r, ms));
-
-  const addPlayingClasses = (buttons, currentButton) =>
+  const _addPlayingClasses = (buttons, currentButton) =>
     new Promise(resolve => {
       Array.from(buttons).forEach(button => {
         if (button === currentButton) {
@@ -21,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
       resolve('done');
     });
 
-  const removePlayingClasses = buttons =>
+  const _removePlayingClasses = buttons =>
     new Promise(resolve => {
       Array.from(buttons).forEach(button => {
         button.classList.remove(classNames.playing, classNames.disabled);
@@ -30,27 +28,27 @@ document.addEventListener('DOMContentLoaded', function() {
       resolve('done');
     });
 
-  const playSound = async (sound, buttons, e) => {
-    await addPlayingClasses(buttons, e.currentTarget);
-
-    const url = '/api/playsound';
-    const data = { sound: sound };
-
-    await fetch(url, {
+  const _playSound = (sound, url = '/api/playsound') =>
+    fetch(url, {
       method: 'POST', // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
+      body: JSON.stringify({ sound }), // data can be `string` or {object}!
       headers: {
         'Content-Type': 'application/json'
       }
     });
 
-    await removePlayingClasses(buttons);
+  const buttonClick = async (sound, buttons, e) => {
+    await _addPlayingClasses(buttons, e.currentTarget);
+
+    await _playSound(sound);
+
+    await _removePlayingClasses(buttons);
   };
 
   Array.from(buttons).forEach(button => {
     button.addEventListener(
       'click',
-      playSound.bind(null, button.dataset.sound, buttons)
+      buttonClick.bind(null, button.dataset.sound, buttons)
     );
   });
 });

@@ -4,7 +4,8 @@
     <div class="buttons-wrapper">
     {% for file in files %}
         {% include 'Components/SoundButton/index.twig' with {
-            file: file
+            file: file,
+            replace: replace
         } %}
     {% endfor %}
     </div>
