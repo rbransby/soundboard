@@ -4,7 +4,6 @@ var player = require('play-sound')((opts = {player:'cvlc'}));
 
 /* GET users listing. */
 router.post('/playsound', function(req, res, next) {
-  console.log(req);
   player.play('./sounds/' + req.body.sound,{cvlc: ['--play-and-exit']}, function(err) {
     if (err) {
       res.json({ played: false });
