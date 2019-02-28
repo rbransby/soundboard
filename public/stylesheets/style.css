@@ -148,3 +148,20 @@ h1 {
     opacity: 0;
   }
 }
+
+
+.search-wrapper {
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-wrapper .input {
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: 2rem;
+  display: block;
+  font-family: 'Comic Sans Ms';
+  -webkit-appearance: none;
+  outline: none;
+}

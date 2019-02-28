@@ -1,7 +1,17 @@
 {% extends 'layout.twig' %}
 {% block body %}
     <h1>{{ title }}</h1>
+
+    <div class="search-wrapper">
+        <form>
+            <input class="input" type="search" placeholder="filter sounds" id="filter-input" />
+        </form>
+    </div>
+
     <div class="buttons-wrapper">
+    <script>
+        window.searchData = {{files|json_encode()}}
+    </script>
     {% for file in files %}
         {% include 'Components/SoundButton/index.twig' with {
             file: file,
@@ -10,5 +20,8 @@
     {% endfor %}
     </div>
 
+    {# <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script> #}
+    <script src="/javascript/js-search.min.js"></script>
     <script src="/javascript/playsound.js"></script>
+    <script src="/javascript/filter.js"></script>
 {% endblock %}
