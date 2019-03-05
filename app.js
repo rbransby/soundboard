@@ -9,6 +9,8 @@ var apiRouter = require('./routes/api');
 
 var app = express();
 
+app.io = require('socket.io')();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
@@ -18,6 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('./routes/sockets')(app.io);
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
