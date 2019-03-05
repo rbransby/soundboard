@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const socket = io('http://localhost:3000');
+  const socket = io(window.location.origin);
 
   const buttons = document.getElementsByClassName('sound-button');
 
