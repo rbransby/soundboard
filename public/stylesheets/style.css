@@ -169,3 +169,25 @@ h1 {
   -webkit-appearance: none;
   outline: none;
 }
+
+
+.view-wrapper {
+  display: flex;
+}
+
+.view-wrapper .buttons-wrapper {
+  width: 80%;
+}
+.view-wrapper .queue-wrapper {
+  width: 20%;
+}
+
+.error {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: red;
+  font-size: 2rem;
+  max-width: 80%;
+  display: none;
+}

@@ -8,16 +8,27 @@
         </form>
     </div>
 
-    <div class="buttons-wrapper">
-    <script>
-        window.searchData = {{files|json_encode()}}
-    </script>
-    {% for file in files %}
-        {% include 'Components/SoundButton/index.twig' with {
-            file: file,
-            replace: replace
-        } %}
-    {% endfor %}
+    <div class="view-wrapper">
+        <div class="buttons-wrapper">
+        <script>
+            window.searchData = {{files|json_encode()}}
+        </script>
+        
+        <div id="error-max-queue" class="error">There are currently too many sounds in the queue, please wait a moment.</div>
+        <div id="error-user-max" class="error">You have added too many sounds to the queue, please wait a moment.</div>
+
+        {% for file in files %}
+            {% include 'Components/SoundButton/index.twig' with {
+                file: file,
+                replace: replace
+            } %}
+        {% endfor %}
+        </div>
+        <div class="queue-wrapper">
+            <h2>Queue</h2>
+
+            <div id="queue"></div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>

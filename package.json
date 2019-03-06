@@ -9,6 +9,7 @@
   "dependencies": {
     "audio-loader": "^1.0.3",
     "audio-play": "^2.2.1",
+    "better-queue": "^3.8.10",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
