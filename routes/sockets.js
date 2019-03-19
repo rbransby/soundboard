@@ -1,9 +1,10 @@
 var Queue = require('better-queue');
 var player = require('play-sound')((opts = { player: 'cvlc' }));
+var path = require('path');
 
 var soundPlayer = new Queue(
   ({ sound }, done) => {
-    player.play('./sounds/' + sound, { cvlc: ['--play-and-exit'] }, function() {
+    player.play(path.join(__dirname,'..','sounds',sound), { cvlc: ['--play-and-exit'] }, function() {
       done(null);
     });
   },
